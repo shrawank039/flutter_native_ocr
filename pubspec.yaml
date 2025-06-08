@@ -2,6 +2,15 @@ name: flutter_native_ocr
 description: "A Flutter plugin for native iOS OCR (Optical Character Recognition) using Apple's Vision framework."
 version: 0.0.1
 homepage: https://github.com/shrawank039/flutter_native_ocr
+repository: https://github.com/shrawank039/flutter_native_ocr
+issue_tracker: https://github.com/shrawank039/flutter_native_ocr/issues
+documentation: https://github.com/shrawank039/flutter_native_ocr#readme
+topics:
+  - ocr
+  - vision
+  - ios
+  - text-recognition
+  - apple-vision
 
 environment:
   sdk: ^3.5.4

@@ -33,7 +33,7 @@ flutter pub get
 
 ## Future Plans
 
-This package currently supports iOS only. Android support using Google ML Kit is planned for future releases, which may result in a package rename to `flutter_native_ocr` for better cross-platform representation.
+This package currently supports iOS only. Android support using Google ML Kit is planned for future releases.
 
 ## Usage
 
