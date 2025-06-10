@@ -8,8 +8,6 @@ documentation: https://github.com/shrawank039/flutter_native_ocr#readme
 topics:
   - ocr
   - vision
-  - ios
-  - android
   - text-recognition
   - apple-vision
   - google-mlkit
