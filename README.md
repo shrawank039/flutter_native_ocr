@@ -1,19 +1,29 @@
 # flutter_native_ocr
 
-A Flutter plugin that provides native iOS OCR (Optical Character Recognition) capabilities using Apple's Vision framework.
+A Flutter plugin that provides native OCR (Optical Character Recognition) capabilities using platform-specific frameworks.
 
 ## Features
 
-- Native iOS OCR using Apple's Vision framework
-- High accuracy text recognition
+- **iOS**: Native OCR using Apple's Vision framework
+- **Android**: Native OCR using Google ML Kit Text Recognition v2 (v16.0.1)
+- High accuracy text recognition on both platforms
 - Support for multiple languages
+- On-device processing (no internet required)
 - Simple and easy-to-use API
-- iOS only (utilizes platform-specific Vision framework)
 
 ## Requirements
 
+### iOS
 - iOS 13.0 or later
 - Xcode 11 or later
+
+### Android
+- Android API level 21 (Android 5.0) or later
+- Google Play Services (for ML Kit)
+- Android SDK 35 or higher (for compilation)
+- Java 11 or higher
+
+### Flutter
 - Flutter 3.3.0 or later
 
 ## Installation
@@ -22,7 +32,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  flutter_native_ocr: ^0.0.1
+  flutter_native_ocr: ^0.1.0
 ```
 
 Then run:
@@ -31,9 +41,43 @@ Then run:
 flutter pub get
 ```
 
+## Android Configuration
+
+If you encounter build issues, ensure your Android project is configured with the following minimum requirements:
+
+### In your `android/app/build.gradle`:
+
+```gradle
+android {
+    compileSdk = 35  // Use 35 or higher
+    
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11  // Use Java 11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+    
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11
+    }
+    
+    defaultConfig {
+        minSdk = 21      // Minimum supported
+        targetSdk = 35   // Should match compileSdk
+    }
+}
+```
+
+### Common Issues:
+- **SDK Version Warning**: If you see warnings about plugin compatibility, use `compileSdk = 35`
+- **Java Version**: ML Kit requires Java 11 or higher
+- **NDK Version**: Use the latest NDK version for best compatibility
+
 ## Future Plans
 
-This package currently supports iOS only. Android support using Google ML Kit is planned for future releases.
+This package supports both iOS and Android platforms. Future enhancements may include:
+- Advanced OCR options (language hints, confidence scores)
+- Text detection with bounding boxes
+- Support for more specialized text recognition models
 
 ## Usage
 
@@ -133,11 +177,12 @@ Recognizes text from an image file.
 - `Future<String>`: The recognized text as a string. Returns empty string if no text is found.
 
 **Throws:**
-- `UnsupportedError`: If called on non-iOS platforms
+- `UnsupportedError`: If called on unsupported platforms (only iOS and Android are supported)
 - `PlatformException`: If there's an error during text recognition
 
 ## Supported Image Formats
 
+### iOS
 The plugin supports all image formats supported by UIImage, including:
 - JPEG
 - PNG
@@ -146,13 +191,29 @@ The plugin supports all image formats supported by UIImage, including:
 - BMP
 - GIF
 
+### Android
+The plugin supports all image formats supported by ML Kit, including:
+- JPEG
+- PNG
+- BMP
+- GIF
+- WebP
+
 ## Platform Support
 
-This plugin is **iOS only** and utilizes Apple's Vision framework for text recognition. It will throw an `UnsupportedError` if used on other platforms.
+This plugin supports both **iOS** and **Android** platforms:
+- **iOS**: Utilizes Apple's Vision framework for text recognition
+- **Android**: Utilizes Google ML Kit Text Recognition v2 for text recognition
+
+Both implementations provide on-device processing with no internet connection required.
 
 ## Privacy
 
-This plugin processes images locally on the device using Apple's Vision framework. No data is sent to external servers.
+This plugin processes images locally on the device:
+- **iOS**: Uses Apple's Vision framework (on-device processing)
+- **Android**: Uses Google ML Kit (on-device processing)
+
+No data is sent to external servers on either platform.
 
 ## Contributing
 
@@ -164,18 +225,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Changelog
 
-See [CHANGELOG.md](CHANGELOG.md) for a list of changes.os
-
-A new Flutter plugin project.
-
-## Getting Started
-
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/to/develop-plugins),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+See [CHANGELOG.md](CHANGELOG.md) for a list of changes.
 

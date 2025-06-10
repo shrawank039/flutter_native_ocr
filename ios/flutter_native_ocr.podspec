@@ -1,9 +1,9 @@
 Pod::Spec.new do |s|
   s.name             = 'flutter_native_ocr'
-  s.version          = '0.0.1'
-  s.summary          = 'A Flutter plugin for native iOS OCR using Apple Vision framework.'
+  s.version          = '0.1.0'
+  s.summary          = 'A Flutter plugin for native OCR using Apple Vision framework and Google ML Kit.'
   s.description      = <<-DESC
-A Flutter plugin that provides native iOS OCR (Optical Character Recognition) capabilities using Apple's Vision framework.
+A Flutter plugin that provides native OCR (Optical Character Recognition) capabilities using Apple's Vision framework on iOS and Google ML Kit on Android.
                        DESC
   s.homepage         = 'https://github.com/shrawank039/flutter_native_ocr'
   s.license          = { :file => '../LICENSE' }

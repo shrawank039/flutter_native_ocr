@@ -17,8 +17,9 @@ class MethodChannelFlutterNativeOcr extends FlutterNativeOcrPlatform {
 
   @override
   Future<String> recognizeText(String imagePath) async {
-    if (!Platform.isIOS) {
-      throw UnsupportedError('FlutterNativeOcr is only available on iOS.');
+    if (!Platform.isIOS && !Platform.isAndroid) {
+      throw UnsupportedError(
+          'FlutterNativeOcr is only available on iOS and Android.');
     }
 
     final result = await methodChannel.invokeMethod<String>('recognizeText', {
