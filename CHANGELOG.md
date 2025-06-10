@@ -4,7 +4,6 @@
 * ✅ **Cross-platform**: Now supports both iOS and Android platforms  
 * 📱 **iOS**: Continues to use Apple's Vision framework
 * 🤖 **Android**: Native OCR using Google ML Kit Text Recognition v2
-* 🔄 **Package Update**: Changed package name from `com.example.flutter_native_ocr` to `com.matrixdeveloper.flutter_native_ocr`
 * ⚙️ **Updated Requirements**:
   - Android: compileSdk = 35, Java 11 support, minSdk = 21
   - iOS: iOS 13.0+ (unchanged)

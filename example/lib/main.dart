@@ -22,7 +22,7 @@ class _MyAppState extends State<MyApp> {
   String _recognizedText = '';
   bool _isLoading = false;
   File? _imageFile;
-  final _nativeOcrIosPlugin = FlutterNativeOcr();
+  final _nativeOcrPlugin = FlutterNativeOcr();
   final ImagePicker _picker = ImagePicker();
 
   @override
@@ -35,7 +35,7 @@ class _MyAppState extends State<MyApp> {
     String platformVersion;
     
     try {
-      platformVersion = await _nativeOcrIosPlugin.getPlatformVersion() ??
+      platformVersion = await _nativeOcrPlugin.getPlatformVersion() ??
           'Unknown platform version';
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
@@ -67,7 +67,7 @@ class _MyAppState extends State<MyApp> {
     });
 
     try {
-      final text = await _nativeOcrIosPlugin.recognizeText(_imageFile!.path);
+      final text = await _nativeOcrPlugin.recognizeText(_imageFile!.path);
       setState(() {
         _recognizedText = text.isEmpty ? 'No text found in image' : text;
       });

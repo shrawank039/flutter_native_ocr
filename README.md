@@ -76,7 +76,6 @@ android {
 
 This package supports both iOS and Android platforms. Future enhancements may include:
 - Advanced OCR options (language hints, confidence scores)
-- Text detection with bounding boxes
 - Support for more specialized text recognition models
 
 ## Usage
